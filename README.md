@@ -1,6 +1,6 @@
 # My repository with the road to Backend
 
-### Now me can see:
+### Now you can see:
 * Basics
 * OOP
 * PythonBook
