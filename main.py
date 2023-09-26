@@ -1,13 +1,14 @@
-def f(text: str) -> bool:
-    length = len(text)
-    for i in range(length // 2):
-        if text[i] != text[length - i - 1]:
-            return False
-    return True
+def findComplement(num: int) -> int:
+    num = bin(num)[2:]
+
+    res = 0
+    num = num[::-1]
+    # return int(num)
+    for i in range(len(num)):
+        if num[i] == "0":
+            res += 2 ** i
+
+    return res
 
 
-assert not f("123")
-assert f("121")
-assert f("")
-assert f("1")
-assert f("1213121")
+print(findComplement(5))
