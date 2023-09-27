@@ -1,14 +1,20 @@
-def findComplement(num: int) -> int:
-    num = bin(num)[2:]
+import math
 
-    res = 0
-    num = num[::-1]
-    # return int(num)
-    for i in range(len(num)):
-        if num[i] == "0":
-            res += 2 ** i
+class Solution:
+    @staticmethod
+    def checkPerfectNumber(num: int) -> bool:
+        s = 0
+        for i in range(1, int(math.sqrt(num))+1):
+            if num % i == 0:
+                s += i
+                if i != num // i:
+                    s += num // i
+            if s - num > num:
+                return False
+        s -= num
+        if s == num:
+            return True
+        return False
 
-    return res
 
-
-print(findComplement(5))
+s = print(Solution.checkPerfectNumber(28))
