@@ -1,20 +1,17 @@
-import math
+def lengthOfLongestSubstring(s: str) -> int:
+    curr = ""
+    m = 0
 
-class Solution:
-    @staticmethod
-    def checkPerfectNumber(num: int) -> bool:
-        s = 0
-        for i in range(1, int(math.sqrt(num))+1):
-            if num % i == 0:
-                s += i
-                if i != num // i:
-                    s += num // i
-            if s - num > num:
-                return False
-        s -= num
-        if s == num:
-            return True
-        return False
+    for i in s:
+
+        if i not in curr:
+            curr += i
+        else:
+            m = max(m, len(curr))
+            index = curr.index(i)
+            curr = curr[index:] + i
+
+    return m
 
 
-s = print(Solution.checkPerfectNumber(28))
+print(lengthOfLongestSubstring("aabaab!bb"))
