@@ -1,13 +1,21 @@
-ONE = slice(0, 3)
-TWO = slice(3, 6)
+def groupThePeople(nums: list[int]) -> list[list[int]]:
+    res = []
+    dct = {}
 
-word = "Python"
+    for i in range(len(nums)):
+        if not nums[i] in dct:
+            dct[nums[i]] = [i]
+        else:
+            if len(dct[nums[i]]) == nums[i]:
+                res.append(dct[nums[i]])
+                del dct[nums[i]]
+            else:
+                dct[nums[i]].append(i)
 
-print(word[ONE], word[TWO])
+    for i in dct.values():
+        res.append(i)
 
-some_list = list(range(10))
-some_list[1:3] = [None, None, None]
-print(some_list)
+    return res
 
-some_list[0:1] = 10,
-print(some_list)
+
+print(groupThePeople([3,3,3,3,3,1,3]))
