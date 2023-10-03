@@ -1,11 +1,3 @@
-# class Point:
-#     name = "point"
-class B1: pass
-class B2: pass
+a = [[1, 2], [3, 4], [5, 6]]
 
-
-print(type(object))
-
-Point = type("Point", (B1, B2), {"name": "point"})
-p = Point()
-print(p.name, Point.__mro__)
+print(a[0, 1])
