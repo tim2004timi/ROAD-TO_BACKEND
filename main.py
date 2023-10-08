@@ -1,9 +1,5 @@
-import sqlite3 as sq
+t = (1, 2, [3])
 
-
-class DataBase:
-    __PATH = r"./my-data-base.db"
-
-    def __init__(self):
-
-
+print(t)
+t[2] += 4
+print(t)
