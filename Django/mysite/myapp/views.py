@@ -1,9 +1,9 @@
-from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
+from django.shortcuts import render, redirect
 
 
 def index(request):  # HttpRequest
-    return HttpResponse("MyApp page")
+    return HttpResponse("<h1>MyApp page (main page)</h1>")
 
 
 def some_page(request):
@@ -23,6 +23,10 @@ def show_slug_categories(request, cat_slug):
 def archive(request, year):
     if year > 2023:
         raise Http404()
+    if year < 2000:
+        return HttpResponseRedirect("/")
+        # return redirect("main", permanent=True)
+
     return HttpResponse(f"<h2>Archive of the year {year}</h2>")
 
 
