@@ -1,9 +1,12 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 
 
 def index(request):  # HttpRequest
-    return HttpResponse("<h1>MyApp page (main page)</h1>")
+    # t = render_to_string("myapp/index.html")
+    # return HttpResponse(t)
+    return render(request, "myapp/index.html")
 
 
 def some_page(request):
@@ -32,3 +35,7 @@ def archive(request, year):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("<h1>Страница не найдена</h1>")
+
+
+def about(request):
+    return render(request, "myapp/about.html")
