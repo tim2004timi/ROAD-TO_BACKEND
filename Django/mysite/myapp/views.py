@@ -3,10 +3,27 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 
 
+menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+
+
+class MyClass:
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+
+
 def index(request):  # HttpRequest
     # t = render_to_string("myapp/index.html")
     # return HttpResponse(t)
-    return render(request, "myapp/index.html")
+    data = {
+        "title": "Главная страница",
+        "menu": menu,
+        "float": 28.55,
+        "lst": [1, 2, 3, "abc", True],
+        "set": {1, 2, 3},
+        "dct": {"key1": "value1", "key2": "value2"},
+        "obj": MyClass(10, 20),
+    }
+    return render(request, "myapp/index.html", context=data)
 
 
 def some_page(request):
@@ -38,4 +55,4 @@ def page_not_found(request, exception):
 
 
 def about(request):
-    return render(request, "myapp/about.html")
+    return render(request, "myapp/about.html", {"title": "О сайте"})
