@@ -15,7 +15,7 @@ def spin(msg: str, done: synchronize.Event) -> None:
 
 
 def slow() -> int:
-    time.sleep(3)
+    time.sleep(60)
     return 100
 
 
