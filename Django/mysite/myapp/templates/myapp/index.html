@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>{{ title|upper|default:"Без заголовка" }}</title>
 </head>
 <body>
-<h1>{{ title }}</h1>
-<p>{{ menu }}</p>
-<p>{{ float }}</p>
-<p>{{ lst }}</p>
+<h1>{{ title|capfirst }}</h1>
+<p>{{ menu|last }}</p>
+<p>{{ float|add:"50" }}</p>
+<p>{{ lst|join:" | " }}</p>
 <p>{{ set }}</p>
 <p>{{ dct.key1 }}</p>
 <p>{{ obj.a }}</p>

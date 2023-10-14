@@ -15,7 +15,7 @@ def index(request):  # HttpRequest
     # t = render_to_string("myapp/index.html")
     # return HttpResponse(t)
     data = {
-        "title": "Главная страница",
+        "title": "главная страница",
         "menu": menu,
         "float": 28.55,
         "lst": [1, 2, 3, "abc", True],
