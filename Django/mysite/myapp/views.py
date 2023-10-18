@@ -55,4 +55,13 @@ def page_not_found(request, exception):
 
 
 def about(request):
-    return render(request, "myapp/about.html", {"title": "О сайте"})
+    data = {
+        "friends": [
+            {"name": "Тима", "age": 19, "gender": "натурал", "the_best": True},
+            {"name": "Вова", "age": 16, "gender": "натурал", "the_best": True},
+            {"name": "Люба", "age": 17, "gender": "натурал", "the_best": False},
+            {"name": "Пушок", "age": 12, "gender": "кот", "the_best": True},
+        ],
+        "title": "О сайте"
+    }
+    return render(request, "myapp/about.html", context=data)

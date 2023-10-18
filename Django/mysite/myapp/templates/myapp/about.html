@@ -5,7 +5,20 @@
     <title>{{ title }}</title>
 </head>
 <body>
-<p>{{ menu }}</p>
 <h1>{{ title }}</h1>
+<ul>
+    {% for friend in friends %}
+    {% if friend.the_best %}
+    <li>
+        <h2>{{ friend.name }}</h2>
+        <div>Возраст: {{ friend.age }}</div>
+        <div>Гендер: {{ friend.gender }}</div>
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
 </body>
 </html>
