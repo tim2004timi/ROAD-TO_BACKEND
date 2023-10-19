@@ -1,0 +1,48 @@
+a {
+    text-decoration: none; /* Убираем подчеркивание ссылок */
+    color: #333; /* Задаем желаемый цвет текста для ссылок */
+}
+
+a:hover {
+    color: #f00; /* Цвет текста при наведении (например, красный) */
+}
+
+/* Стили для заголовка "Друганы" */
+.friend-title {
+    font-size: 28px;
+}
+
+/* Стили для списка "Друганы" */
+.friend-list {
+    margin-top: 20px;
+}
+
+/* Стили для каждого друга в списке */
+
+
+.friend-name {
+    margin: 0;
+    font-size: 26px;
+    color: #333;
+}
+
+.friend-info {
+    color: #444;
+    font-size: 18px;
+}
+
+.friend-divider {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.friend-item {
+    width: 900px;
+}
+
+.info {
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+}

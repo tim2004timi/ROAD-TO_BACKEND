@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<ul>
+<ul class="friend-list">
     {% for friend in friends %}
     {% if friend.the_best %}
-    <li>
-        <h2>{{ friend.name }}</h2>
-        <div>Возраст: {{ friend.age }}</div>
-        <div>Гендер: {{ friend.gender }}</div>
+    <li class="friend-item">
+        <h2 class="friend-name">{{ friend.name }}</h2>
+        <div class="friend-info">Возраст: {{ friend.age }}</div>
+        <div class="friend-info">Гендер: {{ friend.gender }}</div>
+        <div class="info">
+            {% autoescape off %}
+            {{ friend.info|truncatewords:50 }}
+            {% endautoescape %}
+        </div>
         <a href="#"></a>
         {% if not forloop.last %}
-        <hr>
+        <hr class="friend-divider">
         {% endif %}
     </li>
     {% endif %}
