@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title|upper|default:"Без заголовка" }}</title>
-</head>
-<body>
-<h1>{{ title|capfirst }}</h1>
+{% extends 'base.html' %}
+{% block content %}
 <p>{{ menu|last }}</p>
 <p>{{ float|add:"50" }}</p>
 <p>{{ lst|join:" | " }}</p>
 <p>{{ set }}</p>
 <p>{{ dct.key1 }}</p>
 <p>{{ obj.a }}</p>
-</body>
-</html>
+{% endblock %}

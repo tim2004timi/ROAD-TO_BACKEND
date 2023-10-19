@@ -7,6 +7,7 @@ menu = ["О сайте", "Добавить друга", "Обратная свя
 menu = [
     {"title": "Главная страница", "name": "main"},
     {"title": "Войти", "name": "login"},
+    {"title": "Друзья", "name": "friends"},
     {"title": "Добавить друга", "name": "add-friend"},
     {"title": "Обратная связь", "name": "feedback"},
     {"title": "О сайте", "name": "about"},
@@ -22,7 +23,7 @@ def index(request):  # HttpRequest
     # t = render_to_string("myapp/index.html")
     # return HttpResponse(t)
     data = {
-        "title": "главная страница",
+        "title": "Главная страница",
         "menu": menu,
         "float": 28.55,
         "lst": [1, 2, 3, "abc", True],
