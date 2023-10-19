@@ -3,7 +3,14 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 
 
-menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+menu = ["О сайте", "Добавить друга", "Обратная связь", "Войти"]
+menu = [
+    {"title": "Главная страница", "name": "main"},
+    {"title": "Войти", "name": "login"},
+    {"title": "Добавить друга", "name": "add-friend"},
+    {"title": "Обратная связь", "name": "feedback"},
+    {"title": "О сайте", "name": "about"},
+]
 
 
 class MyClass:
@@ -32,36 +39,35 @@ def some_page(request):
     return HttpResponse("<h1>It's some page</h1>")
 
 
-def show_categories(request, cat_id):
-    return HttpResponse(f"<h2>Categories: id={cat_id}</h2>")
-
-
-def show_slug_categories(request, cat_slug):
-    return HttpResponse(f"<h2>Categories: slug={cat_slug}</h2>")
-
-
-def archive(request, year):
-    if year > 2023:
-        raise Http404()
-    if year < 2000:
-        return HttpResponseRedirect("/")
-        # return redirect("main", permanent=True)
-
-    return HttpResponse(f"<h2>Archive of the year {year}</h2>")
-
-
 def page_not_found(request, exception):
     return HttpResponseNotFound("<h1>Страница не найдена</h1>")
 
 
-def about(request):
+def friends(request):
     data = {
         "friends": [
-            {"name": "Тима", "age": 19, "gender": "натурал", "the_best": True},
-            {"name": "Вова", "age": 16, "gender": "натурал", "the_best": True},
-            {"name": "Люба", "age": 17, "gender": "натурал", "the_best": False},
-            {"name": "Пушок", "age": 12, "gender": "кот", "the_best": True},
+            {"id": 1, "name": "Тима", "age": 19, "gender": "натурал", "the_best": True},
+            {"id": 2, "name": "Вова", "age": 16, "gender": "натурал", "the_best": True},
+            {"id": 3, "name": "Люба", "age": 17, "gender": "натурал", "the_best": False},
+            {"id": 4, "name": "Пушок", "age": 12, "gender": "кот", "the_best": True},
         ],
-        "title": "О сайте"
+        "title": "Друганы",
+        "menu": menu,
     }
-    return render(request, "myapp/about.html", context=data)
+    return render(request, "myapp/friends.html", context=data)
+
+
+def add_friend(request):
+    return HttpResponse("<h1>Добавить друга</h1>")
+
+
+def feedback(request):
+    return HttpResponse("<h1>Обратная связь</h1>")
+
+
+def about(request):
+    return HttpResponse("<h1>О сайте</h1>")
+
+
+def login(request):
+    return HttpResponse("<h1>Аутентификация</h1>")
