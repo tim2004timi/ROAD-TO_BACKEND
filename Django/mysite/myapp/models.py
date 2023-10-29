@@ -10,3 +10,9 @@ class Friends(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["-time_create"]
+        indexes = [
+            models.Index(fields=["-time_create"])
+        ]
