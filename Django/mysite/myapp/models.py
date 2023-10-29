@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Friends(models.Model):
@@ -17,3 +18,6 @@ class Friends(models.Model):
         indexes = [
             models.Index(fields=["-time_create"])
         ]
+
+    def get_absolute_url(self):
+        return reverse("friend-slug", kwargs={"fr_slug": self.slug})
