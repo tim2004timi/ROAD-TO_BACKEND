@@ -2,7 +2,7 @@
 {% block content %}
 <ul class="friend-list">
     {% for friend in friends %}
-    {% if friend.is_the_best %}
+    {% if friend.is_the_best or not friend.is_the_best %}
     <li class="friend-item">
         <h2 class="friend-name">{{ friend.name }}</h2>
         <!--

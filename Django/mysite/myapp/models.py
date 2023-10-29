@@ -14,10 +14,11 @@ class Friends(models.Model):
         return self.name
 
     class Meta:
-        ordering = ["-time_create"]
-        indexes = [
-            models.Index(fields=["-time_create"])
-        ]
+        pass
+        # ordering = ["-time_create"]
+        # indexes = [
+        #     models.Index(fields=["-time_create"])
+        # ]
 
     def get_absolute_url(self):
         return reverse("friend-slug", kwargs={"fr_slug": self.slug})

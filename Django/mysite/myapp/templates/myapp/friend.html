@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-
 {% block content %}
 
+<div class="info">{{ friend.description }}</div>
 {% if friend.photo %}
 <p>
   <img src="{{friend.photo.url}}">
