@@ -12,5 +12,6 @@ urlpatterns = [
     path("add-friend/", views.add_friend, name="add-friend"),
     path("feedback/", views.feedback, name="feedback"),
     path("about/", views.about, name="about"),
-    path("login/", views.login, name="login")
+    path("login/", views.login, name="login"),
+    path("friend/<slug:fr_slug>/", views.friend_slug, name="friend-slug")
 ]
