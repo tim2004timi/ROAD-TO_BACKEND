@@ -45,9 +45,9 @@ def page_not_found(request, exception):
 
 
 def friends(request):
-    friends_queryset = Friends.objects.all()
+    friends_queryset = Friends.is_the_best_manager.all()
 
-    print(friends_queryset[0].name)
+    print(friends_queryset)
 
     data = {
         "friends": friends_queryset,
