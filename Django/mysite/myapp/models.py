@@ -18,7 +18,7 @@ class Friends(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_the_best = models.BooleanField(choices=Status.choices, default=Status.NOT_THE_BEST)
-    gender = models.ForeignKey("Gender", on_delete=models.PROTECT)
+    gender = models.ForeignKey("Gender", on_delete=models.PROTECT, related_name="notes")
 
     objects = models.Manager()
     is_the_best_manager = IsTheBestManager()
