@@ -18,6 +18,7 @@ class Friends(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_the_best = models.BooleanField(choices=Status.choices, default=Status.NOT_THE_BEST)
+    gender = models.ForeignKey("Gender", on_delete=models.PROTECT)
 
     objects = models.Manager()
     is_the_best_manager = IsTheBestManager()
@@ -34,3 +35,11 @@ class Friends(models.Model):
 
     def get_absolute_url(self):
         return reverse("friend-slug", kwargs={"fr_slug": self.slug})
+
+
+class Gender(models.Model):
+    name = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.name

@@ -1,16 +1,12 @@
-class Solution:
-    @staticmethod
-    def maxWidthOfVerticalArea(points: list[list[int]]) -> int:
-        x_list = []
-        [x_list.append(i[0]) for i in points]
-        x_list.sort()
-        print(x_list)
+import math
 
-        max_sub = 0
-        for i in range(len(x_list) - 1):
-            max_sub = max(max_sub, x_list[i + 1] - x_list[i])
-
-        return max_sub
+for a1 in range(2):
+    for a2 in range(3):
+        for a3 in range(4):
+            for a4 in range(5):
+                for a5 in range(6):
+                    if a1 * 1 + a2 * 2 + a3 * 6 + a4 * 24 + a5 * 120 == 695:
+                        print(a1 + a2 + a3 + a4 + a5)
+                        print(a1, a2, a3, a4, a5)
 
 
-print(Solution.maxWidthOfVerticalArea([[8,7],[9,9],[7,4],[9,7]]))
