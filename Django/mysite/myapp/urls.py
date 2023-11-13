@@ -13,5 +13,6 @@ urlpatterns = [
     path("feedback/", views.feedback, name="feedback"),
     path("about/", views.about, name="about"),
     path("login/", views.login, name="login"),
-    path("friend/<slug:fr_slug>/", views.friend_slug, name="friend-slug")
+    path("friend/<slug:fr_slug>/", views.friend_slug, name="friend-slug"),
+    path("genders/<slug:gender_slug>/", views.show_genders, name="gender-slug")
 ]

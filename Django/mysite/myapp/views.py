@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpRespons
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 
-from myapp.models import Friends
+from myapp.models import Friends, Gender
 
 menu = [
     {"title": "Главная страница", "name": "main"},
@@ -64,6 +64,19 @@ def friend_slug(request, fr_slug):
             "menu": menu,
             }
     return render(request, "myapp/friend.html", data)
+
+
+def show_genders(request, gender_slug):
+    genders = get_object_or_404(Gender, slug=gender_slug)
+    friends_queryset = Friends.is_the_best_manager.filter(gender_id=genders.pk)
+
+    data = {"gender": genders.name,
+            "title": "Гендеры",
+            "menu": menu,
+            "friends": friends_queryset,
+            "gender_selected": genders.pk
+            }
+    return render(request, "myapp/friends.html", context=data)
 
 
 def add_friend(request):
