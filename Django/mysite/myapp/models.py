@@ -19,6 +19,7 @@ class Friends(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_the_best = models.BooleanField(choices=Status.choices, default=Status.NOT_THE_BEST)
     gender = models.ForeignKey("Gender", on_delete=models.PROTECT, related_name="notes")
+    tags = models.ManyToManyField("TagFriends", blank=True, related_name="tags")
 
     objects = models.Manager()
     is_the_best_manager = IsTheBestManager()
@@ -46,3 +47,11 @@ class Gender(models.Model):
 
     def get_absolute_url(self):
         return reverse("gender-slug", kwargs={"gender_slug": self.slug})
+
+
+class TagFriends(models.Model):
+    tag = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.tag
