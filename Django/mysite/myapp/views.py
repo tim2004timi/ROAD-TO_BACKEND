@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpRespons
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 
-from myapp.models import Friends, Gender
+from myapp.models import Friends, Gender, TagFriends
 
 menu = [
     {"title": "Главная страница", "name": "main"},
@@ -45,7 +45,7 @@ def page_not_found(request, exception):
 
 
 def friends(request):
-    friends_queryset = Friends.is_the_best_manager.all()
+    friends_queryset = Friends.objects.all()
 
     print(friends_queryset)
 
@@ -76,6 +76,20 @@ def show_genders(request, gender_slug):
             "friends": friends_queryset,
             "gender_selected": genders.pk
             }
+    return render(request, "myapp/friends.html", context=data)
+
+
+def show_tag_friends(request, tag_slug):
+    tag = get_object_or_404(TagFriends, slug=tag_slug)
+    friends = tag.tags.all()  # tag.tags.filter(is_the_best=Friends.Status.THE_BEST)
+
+    data = {
+        "title": f"Тег : {tag.tag}",
+        "menu": menu,
+        "friends": friends,
+        "gender_selected": None,
+    }
+
     return render(request, "myapp/friends.html", context=data)
 
 

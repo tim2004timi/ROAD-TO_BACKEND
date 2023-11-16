@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+{% load friends_tags %}
+
 {% block content %}
+{% show_all_tags %}
 <ul class="friend-list">
     {% for friend in friends %}
     <li class="friend-item">

@@ -1,0 +1,10 @@
+{% if tags %}
+<h3 style="display: inline-block; margin: 0;">Теги:</h3>
+<ul class="tags-ul">
+    {% for t in tags %}
+    <li class="tags-li">
+        <a href="{{t.get_absolute_url}}">{{t.tag}}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}

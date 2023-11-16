@@ -14,5 +14,6 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("login/", views.login, name="login"),
     path("friend/<slug:fr_slug>/", views.friend_slug, name="friend-slug"),
-    path("genders/<slug:gender_slug>/", views.show_genders, name="gender-slug")
+    path("genders/<slug:gender_slug>/", views.show_genders, name="gender-slug"),
+    path("tag/<slug:tag_slug>/", views.show_tag_friends, name="tag")
 ]
