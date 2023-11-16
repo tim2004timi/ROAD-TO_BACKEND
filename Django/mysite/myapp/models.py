@@ -20,9 +20,10 @@ class Friends(models.Model):
     is_the_best = models.BooleanField(choices=Status.choices, default=Status.NOT_THE_BEST)
     gender = models.ForeignKey("Gender", on_delete=models.PROTECT, related_name="notes")
     tags = models.ManyToManyField("TagFriends", blank=True, related_name="tags")
-
     objects = models.Manager()
     is_the_best_manager = IsTheBestManager()
+    girlfriend = models.OneToOneField("GirlFriend", on_delete=models.SET_NULL, null=True,
+                                      blank="True", related_name="boyfriend")
 
     def __str__(self):
         return self.name
@@ -59,3 +60,11 @@ class TagFriends(models.Model):
 
     def get_absolute_url(self):
         return reverse("tag", kwargs={"tag_slug": self.slug})
+
+
+class GirlFriend(models.Model):
+    objects = models.Manager()
+    name = models.CharField(max_length=50, default="-")
+
+    def __str__(self):
+        return self.name
