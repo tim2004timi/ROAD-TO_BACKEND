@@ -65,6 +65,7 @@ class TagFriends(models.Model):
 class GirlFriend(models.Model):
     objects = models.Manager()
     name = models.CharField(max_length=50, default="-")
+    boyfriends_count = models.IntegerField(blank=True, default=0)
 
     def __str__(self):
         return self.name

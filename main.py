@@ -1,58 +1,77 @@
-class Point:
-    def __init__(self, x, y, z, w):
-        self.x = x
-        self.y = y
-        self.z = z
-        self.w = w
+def foo(lst):
+    for i in lst:
+        s = i.replace("/", ".")
+        s = s.split(".")
 
-    def __str__(self):
-        return f"{str(self.x)} {str(self.y)} {str(self.z)} {str(self.w)}"
+        if s[4] == "24":
+            mask = "255.255.255.0"
+        elif s[4] == "30":
+            mask = "255.255.255.252"
+        elif s[4] == "16":
+            mask = "255.255.0.0"
 
+        s[1] = str(int(s[1]) + 11)
 
-def is_pair(p1: Point, p2: Point):
-    count = 0
-
-    if p1.x != p2.x:
-        count += 1
-    if p1.y != p2.y:
-        count += 1
-    if p1.z != p2.z:
-        count += 1
-    if p1.w != p2.w:
-        count += 1
-
-    if count > 1:
-        return True
-    return False
+        print(f"ip route {'.'.join(s[:4])} {mask} {interface}")
 
 
-def func(points):
-    end = len(points) - 1
-    i = 0
-    while i < end:
-        j = i + 1
-        while j < len(points):
-            if not is_pair(points[i], points[j]):
-                points.pop(j)
-                j -= 1
-                end -= 1
-            j += 1
-        i += 1
+third_networks = \
+"""10.11.11.0/30
+30.30.22.0/30
+30.30.33.0/30
+182.200.1.0/30
+182.200.2.0/30
+182.200.3.0/30
+169.185.1.0/30
+169.185.2.0/30
+169.185.3.0/30
+172.160.1.0/30
+172.160.2.0/30
+172.160.3.0/30"""
 
+second_networks = \
+    """10.10.10.0/30
+    30.30.2.0/30
+    30.30.3.0/30
+    18.20.1.0/30
+    18.20.2.0/30
+    18.20.3.0/30
+    16.18.1.0/30
+    16.18.2.0/30
+    16.18.3.0/30
+    17.16.1.0/30
+    17.16.2.0/30
+    17.16.3.0/30"""
 
-def main():
-    points = []
+first_networks = \
+    """10.20.0.0/30
+    10.19.0.0/30
+    10.16.0.0/30
+    10.17.0.0/30
+    10.0.0.0/16"""
 
-    for x in range(10):
-        for y in range(10):
-            for z in range(10):
-                for w in range(10):
-                    points.append(Point(x, y, x, w))
+third_networks = third_networks.split()
+second_networks = second_networks.split()
+first_networks = first_networks.split()
 
-    func(points)
+j = int(input("j: "))
+next_network = second_networks[j - 1]
+pc_network = third_networks[j - 1]
 
-    print(len(points))
+second_networks.remove(next_network)
+third_networks.remove(pc_network)
 
+next_network = next_network.replace("/", ".")
+next_network = next_network.split(".")
+next_network[1] = str(int(next_network[1]) + 11)
+next_network[3] = str(int(next_network[3]) + 2)
 
-if __name__ == "__main__":
-    main()
+interface = ".".join(next_network[:4])
+
+print("ena")
+print("conf t")
+foo(third_networks)
+foo(second_networks)
+foo(first_networks)
+print("exit")
+print("wr\n\n\n")
